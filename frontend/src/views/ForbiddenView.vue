@@ -1,0 +1,1 @@
+<template><section class="forbidden panel"><span>403</span><div><small>ACCESS DENIED</small><h2>这里是管理员区域</h2><p>当前账号没有访问权限。你的登录状态仍然有效，可以返回工作台继续使用普通功能。</p><router-link class="primary-button" to="/">返回工作台</router-link></div></section></template>

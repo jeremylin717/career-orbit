@@ -1,0 +1,15 @@
+.idea/
+.vscode/
+*.iml
+backend/target/
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+frontend/**/*.js
+frontend/**/*.js.map
+.env
+*.log
+.run/
+.playwright-cli/
+frontend/.playwright-cli/
+frontend/output/playwright/

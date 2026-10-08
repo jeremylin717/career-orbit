@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:career_orbit_integration;MODE=MySQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  sql:
+    init:
+      mode: always
+  data:
+    redis:
+      host: localhost
+      port: 6399
+app:
+  ai:
+    chat:
+      configured: false
+    embedding:
+      configured: false
+  admin:
+    password: ""
+management:
+  health:
+    redis:
+      enabled: false

@@ -1,0 +1,29 @@
+{
+  "name": "career-orbit-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vue-tsc --noEmit -p tsconfig.app.json && vite build",
+    "preview": "vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "axios": "^1.12.2",
+    "element-plus": "^2.11.4",
+    "pinia": "^3.0.3",
+    "vue": "^3.5.22",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/test-utils": "^2.4.6",
+    "happy-dom": "^20.14.5",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.9",
+    "vitest": "^4.1.11",
+    "vue-tsc": "^3.1.1"
+  }
+}

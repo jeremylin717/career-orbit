@@ -1,0 +1,35 @@
+name: Bug 报告
+description: 报告可复现的问题
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: 请勿在公开 Issue 中粘贴 API Key、真实简历或用户数据。
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 实际发生了什么？期望结果是什么？
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      placeholder: "1. 打开…\n2. 点击…\n3. 看到…"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 环境
+      placeholder: Windows 11 / Java 17 / Node.js 20
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 脱敏后的日志或截图
+      render: shell
+

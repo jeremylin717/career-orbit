@@ -1,0 +1,16 @@
+spring:
+  sql:
+    init:
+      mode: always
+  datasource:
+    hikari:
+      connection-timeout: 5000
+      validation-timeout: 3000
+      maximum-pool-size: 10
+logging:
+  level:
+    com.careerorbit: INFO
+management:
+  endpoint:
+    health:
+      show-details: always

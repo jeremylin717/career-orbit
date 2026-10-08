@@ -1,0 +1,85 @@
+server:
+  port: ${SERVER_PORT:8080}
+spring:
+  application:
+    name: career-orbit-api
+  # 自动加载项目根目录的 .env(可选),这样 IDEA 直接启动也能读到密钥与数据库配置。
+  config:
+    import:
+      - optional:file:.env[.properties]
+      - optional:file:../.env[.properties]
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/career_orbit?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowMultiQueries=true}
+    # 本地开发默认值(与 .env 一致)。用 IDEA 启动时不会读 .env,会回退到这里。
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 15MB
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      connect-timeout: 800ms
+      timeout: 800ms
+  jackson:
+    default-property-inclusion: non_null
+app:
+  admin:
+    email: ${ADMIN_EMAIL:}
+    password: ${ADMIN_PASSWORD:}
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:120}
+  ai:
+    chat:
+      base-url: ${CHAT_BASE_URL:https://api.deepseek.com}
+      api-key: ${CHAT_API_KEY:}
+      model: ${CHAT_MODEL:deepseek-chat}
+      timeout-seconds: ${CHAT_TIMEOUT_SECONDS:60}
+      configured: ${CHAT_CONFIGURED:false}
+    embedding:
+      base-url: ${EMBEDDING_BASE_URL:https://dashscope.aliyuncs.com/compatible-mode}
+      api-key: ${EMBEDDING_API_KEY:}
+      model: ${EMBEDDING_MODEL:text-embedding-v3}
+      timeout-seconds: ${EMBEDDING_TIMEOUT_SECONDS:60}
+      configured: ${EMBEDDING_CONFIGURED:false}
+    vision:
+      # 图片识别 JD 用的视觉模型;默认复用 Embedding 的 DashScope 地址与密钥。
+      base-url: ${VISION_BASE_URL:${EMBEDDING_BASE_URL:https://dashscope.aliyuncs.com/compatible-mode}}
+      api-key: ${VISION_API_KEY:${EMBEDDING_API_KEY:}}
+      model: ${VISION_MODEL:qwen-vl-max}
+      timeout-seconds: ${VISION_TIMEOUT_SECONDS:60}
+      configured: ${VISION_CONFIGURED:${EMBEDDING_CONFIGURED:false}}
+  elasticsearch:
+    url: ${ELASTICSEARCH_URL:http://localhost:9200}
+    index: ${ELASTICSEARCH_INDEX:career-orbit-knowledge}
+    connect-timeout-seconds: ${ELASTICSEARCH_CONNECT_TIMEOUT_SECONDS:5}
+    read-timeout-seconds: ${ELASTICSEARCH_READ_TIMEOUT_SECONDS:15}
+  storage:
+    endpoint: ${MINIO_ENDPOINT:http://localhost:9000}
+    access-key: ${MINIO_ACCESS_KEY}
+    secret-key: ${MINIO_SECRET_KEY}
+    bucket: ${MINIO_BUCKET:career-orbit}
+management:
+  health:
+    redis:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: auto
